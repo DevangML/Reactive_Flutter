@@ -1,4 +1,5 @@
 import 'Streams.dart';
+import 'Operators.dart';
 
 // In this file we have defined reactive functions or operations which use the data stream and perform some action
 
@@ -63,4 +64,60 @@ Future<void> lastWhere() async {
 
 Future<void> singleWhere() async {
   print(await getNumbers().singleWhere((i) => i <= 0));
+}
+
+// Custom operator functions
+
+Future<void> expand() async {
+  await expandStream(getNumbers()).listen((item) {
+    print(item);
+  }).asFuture();
+}
+
+Future<void> map() async {
+  await mapStream(getNumbers()).listen((item) {
+    print(item);
+  }).asFuture();
+}
+
+Future<void> skip() async {
+  await skipStream(getNumbers(), 100).listen((item) {
+    print(item);
+  }).asFuture();
+}
+
+Future<void> skipWhile() async {
+  await skipWhileStream(getNumbers(), (i) => i < 10).listen((item) {
+    print(item);
+  }).asFuture();
+}
+
+Future<void> take() async {
+  await takeStream(getNumbers(), 2).listen((data) {
+    print(data);
+  }).asFuture();
+}
+
+Future<void> takeWhile() async {
+  await takeWhileStream(getNumbers(), (item) => item < 3).listen((data) {
+    print(data);
+  }).asFuture();
+}
+
+Future<void> where() async {
+  await whereStream(getNumbers(), (item) => item % 2 == 0).listen((data) {
+    print(data);
+  }).asFuture();
+}
+
+Future<void> distinct() async {
+  await distinctStream(getNumbersDuplicates()).listen((data) {
+    print(data);
+  }).asFuture();
+}
+
+Future<void> chaining() async {
+  await chainingStream(getNumbersDuplicates()).listen((data) {
+    print(data);
+  }).asFuture();
 }

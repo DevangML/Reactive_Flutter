@@ -16,3 +16,10 @@ Stream<int> getNumbersException() async* {
     }
   }
 }
+
+Stream<int> getNumbersDuplicates() async* {
+  for (int i = 1; i <= 3; i++) {
+    yield i;
+    yield i;
+    await Future.delayed(Duration(seconds: 1));
+  }
