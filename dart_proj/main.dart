@@ -1,12 +1,18 @@
-Stream<int> getNumber() async* {
-  for (var i = 1; i <= 10; i++) {
-    yield i;
-    await Future.delayed(Duration(seconds: 1));
-  }
-}
+import 'AsyncFunctions.dart';
 
-void main() {
-  getNumber().listen((data) {
-    print('Number is : $data');
-  });
+// Rather than directly using data streams in main we are calling various methods created using streams here
+
+void main() async {
+  await awaitFor();
+  await first();
+  await last();
+  await length();
+  await single();
+  await any();
+  await contains();
+  await elementAt();
+  await firstWhere();
+  await join();
+  await lastWhere();
+  await singleWhere();
 }
