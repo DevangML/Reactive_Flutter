@@ -2,6 +2,7 @@ import 'Streams.dart';
 
 // In this file we have defined reactive functions or operations which use the data stream and perform some action
 
+// This function waits for all numbers to be mitted before iteration
 Future<void> awaitFor() async {
   int sum = 0;
   await for (var number in getNumbers()) {
@@ -23,6 +24,7 @@ Future<void> length() async {
   print(await getNumbers().length);
 }
 
+// It emits an exception in most cases, but if the stream emits only one value overall then it returns that value
 Future<void> single() async {
   print(await getNumbers().single);
 }
